@@ -1,0 +1,353 @@
+@charset "utf-8";
+/* CSS Document */
+
+/* =Reset
+-------------------------------------------------------------- */
+
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	vertical-align: baseline;
+}
+body {
+	line-height: 1;
+}
+ol,
+ul {
+	list-style: none;
+}
+blockquote,
+q {
+	quotes: none;
+}
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+caption,
+th,
+td {
+	font-weight: normal;
+	text-align: left;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	/* clear: both; */
+}
+html {
+	overflow-y: scroll;
+	font-size: 100%;
+	-webkit-text-size-adjust: 100%;
+	-ms-text-size-adjust: 100%;
+}
+a:focus {
+	outline: thin dotted;
+}
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+nav,
+section {
+	display: block;
+}
+audio,
+canvas,
+video {
+	display: inline-block;
+}
+audio:not([controls]) {
+	display: none;
+}
+del {
+	color: #333;
+}
+ins {
+	background: #fff9c0;
+	text-decoration: none;
+}
+hr {
+	background-color: #ccc;
+	border: 0;
+	height: 1px;
+	margin: 24px;
+	margin-bottom: 1.714285714rem;
+}
+sub,
+sup {
+	font-size: 75%;
+	line-height: 0;
+	position: relative;
+	vertical-align: baseline;
+}
+sup {
+	top: -0.5em;
+}
+sub {
+	bottom: -0.25em;
+}
+small {
+	font-size: smaller;
+}
+img {
+	border: 0;
+	-ms-interpolation-mode: bicubic;
+}
+
+/* Clearing floats */
+.clear:after{
+	clear: both;
+}
+.clear:before,
+.clear:after{
+	display: table;
+	content: "";
+}
+
+/* 
+Contents
+-------------
+=Basic Structure 
+=Page Structure
+=Header
+=Navigation
+=Footer  
+
+*/ 
+
+
+/* =Basic Structure */ 
+
+html {
+	font-size: 87.5%;
+}
+body {
+	font-size: 14px;
+	font-size: 1rem;
+	font-family: "ＭＳ ゴシック", Osaka－等幅 , Adobe Heiti Std,  Helvetica, Arial, sans-serif;
+	text-rendering: optimizeLegibility;
+	color: #807676;
+	background: url(images/bg.jpg);
+	padding-top: 35px;
+	padding-top: 2.5rem;
+	padding-bottom: 15px;
+	padding-bottom: 1.0714285rem;
+}
+
+
+
+/* =Page Structure */ 
+
+#main-logo {
+	margin: 14px 0 14px 7px;
+	margin: 1rem 0 1rem 0.5rem
+}
+.contact-container {
+	background: url(images/contact-bg.png);
+	width: 157px;
+	height: 47px;
+	display:inline-block;
+	float:right;
+	margin: 28px 7px 28px 0;
+	margin: 2rem .5rem 2rem 0;
+}
+.top-call {
+	background: url(images/phone-icon.png) center center no-repeat;
+	height: 43px;
+	width: 76px;
+	float:left;
+	display: block  
+}
+.top-email {
+	background: url(images/email-icon.png) center center no-repeat;
+	height: 43px;
+	width: 76px;
+	float:right;
+	display: block
+}
+
+ul.menu li .item-thumbnail{
+	float:left;
+	width: 90px;
+	background: url(images/sep-black.png) right repeat-y ;
+	padding-right: 2px;
+	margin-right: 5%
+}
+ul.menu li .item-title{
+	height: 100%;
+	float:left;
+
+	padding: 0 5%;
+	display:block
+}
+ul.menu li a {
+	line-height: 4.3;
+	display:block;
+	margin-right: 5%;
+	color: #fff;
+	text-decoration: none;
+	background:url(images/bullet-arrow.png) right center no-repeat;
+	
+}
+ul.menu li a span {
+	background:url(images/bullet-arrow.png);
+	width:9px;
+	height: 7px;
+	float:right;
+	margin-top: 26px
+}
+
+ul.menu > li {
+	border-top: 1px solid #000;
+	display:inline-block;
+	width: 100%;
+	
+	background: rgb(33,33,33); /* Old browsers */
+/* IE9 SVG, needs conditional override of 'filter' to 'none' */
+background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzIxMjEyMSIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiMxNzE3MTciIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+background: -moz-linear-gradient(top,  rgba(33,33,33,1) 0%, rgba(23,23,23,1) 100%); /* FF3.6+ */
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(33,33,33,1)), color-stop(100%,rgba(23,23,23,1))); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(top,  rgba(33,33,33,1) 0%,rgba(23,23,23,1) 100%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(top,  rgba(33,33,33,1) 0%,rgba(23,23,23,1) 100%); /* Opera 11.10+ */
+background: -ms-linear-gradient(top,  rgba(33,33,33,1) 0%,rgba(23,23,23,1) 100%); /* IE10+ */
+background: linear-gradient(to bottom,  rgba(33,33,33,1) 0%,rgba(23,23,23,1) 100%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#212121', endColorstr='#171717',GradientType=0 ); /* IE6-8 */
+
+	
+}
+
+hgroup {
+	margin-bottom: 14px;
+	margin-bottom: 1rem
+}
+
+
+ul.menu {
+	border-bottom: 1px solid #000
+}
+
+
+/* =Header */ 
+header.site-header {
+	position: fixed;
+	top:0;
+	left:0;
+	background: url(images/woodbar.jpg) bottom left;
+	min-height: 35px;
+	width:100% ;
+	display:inline-block;
+	z-index:10
+}
+.home-button {
+	background:url(images/home-icon.png);
+	width:100%;
+	height: 100%
+}
+
+.home-button-container {
+	background:url(images/sep-wood-vertical.jpg) right repeat-y;	
+	float:left
+}
+
+.menu-button {
+	background:url(images/menu-icon.png);
+	width:100%;
+	height: 100%
+}
+.menu-button.active {
+	background-position: 0 35px
+}
+
+
+.menu-button-container {
+	background:url(images/sep-wood-vertical.jpg) left repeat-y;	
+	float:right
+}
+
+.home-button-container,
+.menu-button-container {
+	width:44px;
+	height: 35px;
+	cursor:pointer;
+}
+.social-media-top {
+	float:right;
+	margin-top: 5px;
+	margin-top: 0.35714285rem;
+	margin-right: 5px;
+	margin-right: 0.35714285rem;
+}
+.page-title {
+	color: #FFF;
+	text-shadow: 1px 1px 2px #000;
+	line-height: 2.5;
+	padding: 0 5px;
+	padding: 0 0.35714285rem;
+}
+
+
+/* =Navigation */
+.nav-container {
+	position:fixed;
+	right: -100%;
+	top: 35px;
+	width: 118px;
+	height: 100%;
+	background:url(images/menu-bg.jpg);
+	box-shadow: -1px 1px 4px rgba(0, 0, 0, 0.5);
+	overflow: scroll
+}
+ul.site-nav {
+	width: 90%;
+	margin: 0 auto
+}
+ul.site-nav li {
+	background:url(images/sep-wood-horizontal.jpg) bottom repeat-x;
+	padding: 14px 0;
+	padding: 1rem 0
+}
+ul.site-nav a {
+	color: #fff;
+	text-decoration: none;
+	text-shadow: 1px 1px 2px #000;
+	text-align:center;
+	display:block;
+	width: 100%
+}
+ul.site-nav a img {
+	display:block;
+	margin: 0 auto
+}
+
+
+
+
+ 
+
+/* =footer */ 
+footer.site-footer {
+	position: fixed;
+	bottom:0;
+	left:0;
+	background: url(images/woodbar.jpg) bottom right;
+	height: 15px;
+	width:100% ;
+	box-shadow: 0 -1px 4px rgba(0, 0, 0, 0.5);
+}

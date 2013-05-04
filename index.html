@@ -1,0 +1,126 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Donaiya</title>
+
+<!-- Responsive and mobile friendly stuff -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, target-densitydpi=160dpi, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
+
+<link type="text/css" rel="stylesheet" href="style.donaiya.css" />
+    
+<script src="js/jquery-1.9.1.min.js" type="text/javascript"></script>
+	
+<script>
+	$(function(){
+			$('.menu-button').click(function(){
+					
+				if($(this).hasClass('active')){
+					$(this).removeClass('active');
+					$('.nav-container').animate({right:"-"+100+"%"}, 300);
+					
+				}else {
+					$(this).addClass('active');
+					$('.nav-container').animate({right:0}, 300);
+				}
+			})
+		})
+	
+</script>
+    
+</head>
+
+<body>
+	<header class="site-header">
+    	<div class="home-button-container">
+        	<div class="home-button"></div>
+        </div> 
+        <span class="page-title">
+        	サブページ
+        </span>
+        
+        
+        <div class="menu-button-container">
+        	<div class="menu-button"></div>
+        </div> 
+        <img src="images/twitter-btn.png" class="social-media-top" />
+        <img src="images/fb-btn.png"  class="social-media-top"/>
+        
+    </header>
+    
+    <div class="nav-container">
+    	<div class="nav-wrapper">
+        	<ul class="site-nav">
+            	<li><a href="#"><img src="images/navmenu-icon.png" />メニュー</a></li>
+                <li><a href="#"><img src="images/campaign-icon.png" />キャンペーン</a></li>
+                <li><a href="#"><img src="images/newspaper-icon.png" />ニュース</a></li>
+                <li><a href="#"><img src="images/info-icon.png" />会社情報</a></li>
+                <li><a href="#"><img src="images/shopping-icon.png" />オンラインシ
+ョッピング</a></li>
+                <li><a href="#"><img src="images/takoyaki-icon.png" />メニュー1</a></li>
+                <li><a href="#"><img src="images/takoyaki-icon.png" />メニュー1</a></li>
+                <li><a href="#"><img src="images/takoyaki-icon.png" />メニュー1</a></li>
+                <li><a href="#"><img src="images/takoyaki-icon.png" />メニュー1</a></li>
+                <li><a href="#"><img src="images/takoyaki-icon.png" />メニュー1</a></li>
+                <li><a href="#"><img src="images/takoyaki-icon.png" />メニュー1</a></li>
+                <li><a href="#"><img src="images/takoyaki-icon.png" />メニュー1</a></li>
+                <li><a href="#"><img src="images/takoyaki-icon.png" />メニュー1</a></li>
+                <li><a href="#"><img src="images/takoyaki-icon.png" />メニュー1</a></li>
+            </ul>
+        </div> <!-- nav wrapper -->
+    </div> <!-- nav container -->
+    
+    <div class="site-body">
+        <hgroup>
+        	<img src="images/main-logo.png" id="main-logo" />
+            <div class="contact-container">
+            	<a href="#" class="top-call"></a>
+                <a href="#" class="top-email"></a>
+            </div> <!-- contact container -->
+        </hgroup>
+        
+        <div class="content-container">
+        	<ul class="menu">
+                <li>
+                	<div class="item-thumbnail"><img src="images/item-1-thumbnail.jpg" /></div>
+                     <a href="#">特別なたこ焼き1 </a>
+                </li>
+                <li>
+                	<div class="item-thumbnail"><img src="images/item-2-thumbnail.jpg" /></div>
+                     <a href="#">特別なたこ焼き1 </a>
+                </li>
+                <li>
+                	<div class="item-thumbnail"><img src="images/item-3-thumbnail.jpg" /></div>
+                     <a href="#">特別なたこ焼き1 </a>
+                </li>
+                <li>
+                	<div class="item-thumbnail"><img src="images/item-4-thumbnail.jpg" /></div>
+                     <a href="#">特別なたこ焼き1 </a>
+                </li>
+                <li>
+                	<div class="item-thumbnail"><img src="images/item-5-thumbnail.jpg" /></div>
+                     <a href="#">特別なたこ焼き1 </a>
+                </li>
+                <li>
+                	<div class="item-thumbnail"><img src="images/item-6-thumbnail.jpg" /></div>
+                     <a href="#">特別なたこ焼き1 </a>
+                </li>
+                <li>
+                	<div class="item-thumbnail"><img src="images/item-7-thumbnail.jpg" /></div>
+                     <a href="#">特別なたこ焼き1 </a>
+                </li>
+                <li>
+                	<div class="item-thumbnail"><img src="images/item-8-thumbnail.jpg" /></div>
+                     <a href="#">特別なたこ焼き1 </a>
+                </li>
+                
+            </ul>
+        </div> <!-- content  container -->
+    </div>
+    
+    <footer class="site-footer">
+    </footer>
+</body>
+</html>

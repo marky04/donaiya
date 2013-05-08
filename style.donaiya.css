@@ -151,7 +151,9 @@ body {
 	padding-bottom: 1.0714285rem;
 }
 
-
+body#home {
+	padding-bottom: 195px
+}
 
 /* =Page Structure */ 
 
@@ -351,3 +353,29 @@ footer.site-footer {
 	width:100% ;
 	box-shadow: 0 -1px 4px rgba(0, 0, 0, 0.5);
 }
+
+#home-footer{
+	background: #000;
+	height: 195px
+}
+	#home-footer ul {
+		text-align:center;
+		display:inline-block;
+		width: 100%;
+		padding: 14px 0;
+		padding: 1rem 0
+	}
+		#home-footer ul li {
+			width: 23.33%;
+			float:left;
+			padding: 14px 5%;
+			padding: 1rem 5%
+		}
+		#home-footer ul li img {
+			display:block;
+			margin: 0 auto 10px auto 
+		}
+		#home-footer ul li a {
+			text-decoration: none;
+			color: #fff
+		}

@@ -1,115 +1,44 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Donaiya</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="robots" content="no-index, no-follow" /><!--index, follow-->
 
 <!-- Responsive and mobile friendly stuff -->
 <meta name="HandheldFriendly" content="True">
 <meta name="MobileOptimized" content="320">
 <meta name="viewport" content="width=device-width, target-densitydpi=160dpi, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
 
-<link type="text/css" rel="stylesheet" href="style.donaiya.css" />
-<link type="text/css" rel="stylesheet" href="flexslider.css"  />    
-<script src="js/jquery-1.9.1.min.js" type="text/javascript"></script>
-<script src="js/jquery.flexslider-min.js" type="text/javascript"></script>
-	<!-- Hook up the FlexSlider -->
-	<script type="text/javascript">
-		$(window).load(function() {
-			$('.flexslider').flexslider();
-		});
-	</script>
+<link type="text/css" rel="stylesheet" href="css/style.donaiya.css" />
+<link type="text/css" rel="stylesheet" href="css/flexslider.css"  />
 </head>
-
 <body id="home">
-	<header class="site-header">
-    	<div class="home-button-container">
-        	<div class="home-button"></div>
-        </div> 
-        <span class="page-title">
-        	サブページ
-        </span>
-        
-        
-        <div class="menu-button-container">
-        	<div class="menu-button"></div>
-        </div> 
-        <img src="images/twitter-btn.png" class="social-media-top" />
-        <img src="images/fb-btn.png"  class="social-media-top"/>
-        
-    </header>
-    
-    <div class="nav-container">
-    	<div class="nav-wrapper">
-        	<ul class="site-nav">
-            	<li><a href="#"><img src="images/navmenu-icon.png" />メニュー</a></li>
-                <li><a href="#"><img src="images/campaign-icon.png" />キャンペーン</a></li>
-                <li><a href="#"><img src="images/newspaper-icon.png" />ニュース</a></li>
-                <li><a href="#"><img src="images/info-icon.png" />会社情報</a></li>
-                <li><a href="#"><img src="images/shopping-icon.png" />オンラインシ
-ョッピング</a></li>
-                <li><a href="#"><img src="images/takoyaki-icon.png" />メニュー1</a></li>
-                <li><a href="#"><img src="images/takoyaki-icon.png" />メニュー1</a></li>
-                <li><a href="#"><img src="images/takoyaki-icon.png" />メニュー1</a></li>
-                <li><a href="#"><img src="images/takoyaki-icon.png" />メニュー1</a></li>
-                <li><a href="#"><img src="images/takoyaki-icon.png" />メニュー1</a></li>
-                <li><a href="#"><img src="images/takoyaki-icon.png" />メニュー1</a></li>
-                <li><a href="#"><img src="images/takoyaki-icon.png" />メニュー1</a></li>
-                <li><a href="#"><img src="images/takoyaki-icon.png" />メニュー1</a></li>
-                <li><a href="#"><img src="images/takoyaki-icon.png" />メニュー1</a></li>
-            </ul>
-        </div> <!-- nav wrapper -->
-    </div> <!-- nav container -->
-    
-    <div class="site-body">
-        <hgroup>
-        	<img src="images/main-logo.png" id="main-logo" />
-            <div class="contact-container">
-            	<a href="#" class="top-call"></a>
-                <a href="#" class="top-email"></a>
-            </div> <!-- contact container -->
-        </hgroup>
-        
-        <div class="content-container">
-        	
-            
-            <script type="text/javascript">
-			$(window).load(function() {
-						$('.flexslider').flexslider({
-						  animation: "slide",
-						  controlsContainer: ".flexslider-container"
-					  });
-					});
-				</script>
-		<style>
-			.flex-direction-nav .flex-prev, .flex-direction-nav .flex-next{display:none;}
-		</style>
-		<div class="flexslider-container">
-			<div class="flexslider">
-		    <ul class="slides">
-		    	<li>
-		    		<img src="images/slider.jpg"  />
-		    	</li>
-		    	<li>
-		    		<img src="images/slider-1.jpg"  />
-		    	</li>
-		    </ul>
-		  </div>
-	 	</div>
-        <img src="images/slider-shadow.png" style="width: 100%"  />
-        
-        </div> <!-- content  container -->
-    </div>
-    
-    <footer id="home-footer" class="site-footer">
-    	<ul>
-			<li><a href="#"><img src="images/icon-1.jpg" />ホーム</a></li>
-            <li><a href="sub.html"><img src="images/icon-2.jpg" />メニュー</a></li>
-            <li><a href="#"><img src="images/icon-3.jpg" />キャンペーン</a></li>
-            <li><a href="#"><img src="images/icon-4.jpg" />ニュース</a></li>
-            <li><a href="#"><img src="images/icon-5.jpg" />会社情報</a></li>
-            <li><a href="#"><img src="images/icon-6.jpg" />オンラインシ ョッピング</a></li>
-        </ul>
-    </footer>
+	<div id="mobile_content"></div>
+	<!-- Placed at the end of the document so the pages load faster -->
+	<script src="js/jquery.js"></script>
+	<script type="text/javascript" src="js/jquery.flexslider-min.js"></script>
+	<script type="text/javascript">
+	AjaxReponse('http://localhost/ci_donaiya/', 'mobile_content', 'home');
+	//AjaxReponse('http://mobile.nextus.asia/', 'main_content', 'home');
+	function AjaxReponse(link, result_holder, nav_id)
+	{
+		$('#' + result_holder).html('<div class="progress progress-striped active" style="margin-top:80px;"><div class="bar" style="width: 50%;"></div></div>');
+
+		$('#footer .main a').removeClass('btn-primary');
+		$('#footer .main a i').removeClass('icon-white');
+		$('#' + nav_id).addClass('btn-primary');
+		$('#' + nav_id + ' i').addClass('icon-white');
+
+		$.ajax({
+			url: link,
+			success: function(data) {
+				$('#' + result_holder).html(data);
+			}
+		});
+	}
+	</script>
+	<script type="text/javascript" charset="utf-8" src="phonegap.js"></script>
+	<script type="text/javascript" charset="utf-8" src="cordova-2.5.0.js"></script>
 </body>
 </html>

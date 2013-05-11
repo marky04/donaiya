@@ -144,7 +144,7 @@ body {
 	font-family: "ＭＳ ゴシック", Osaka－等幅 , Adobe Heiti Std,  Helvetica, Arial, sans-serif;
 	text-rendering: optimizeLegibility;
 	color: #807676;
-	background: url(images/bg.jpg);
+	background: url(../images/bg.jpg);
 	padding-top: 35px;
 	padding-top: 2.5rem;
 	padding-bottom: 15px;
@@ -162,7 +162,7 @@ body#home {
 	margin: 1rem 0 1rem 0.5rem
 }
 .contact-container {
-	background: url(images/contact-bg.png);
+	background: url(../images/contact-bg.png);
 	width: 157px;
 	height: 47px;
 	display:inline-block;
@@ -171,14 +171,14 @@ body#home {
 	margin: 2rem .5rem 2rem 0;
 }
 .top-call {
-	background: url(images/phone-icon.png) center center no-repeat;
+	background: url(../images/phone-icon.png) center center no-repeat;
 	height: 43px;
 	width: 76px;
 	float:left;
 	display: block  
 }
 .top-email {
-	background: url(images/email-icon.png) center center no-repeat;
+	background: url(../images/email-icon.png) center center no-repeat;
 	height: 43px;
 	width: 76px;
 	float:right;
@@ -188,7 +188,7 @@ body#home {
 ul.menu li .item-thumbnail{
 	float:left;
 	width: 90px;
-	background: url(images/sep-black.png) right repeat-y ;
+	background: url(../images/sep-black.png) right repeat-y ;
 	padding-right: 2px;
 	margin-right: 5%
 }
@@ -205,11 +205,11 @@ ul.menu li a {
 	margin-right: 5%;
 	color: #fff;
 	text-decoration: none;
-	background:url(images/bullet-arrow.png) right center no-repeat;
+	background:url(../images/bullet-arrow.png) right center no-repeat;
 	
 }
 ul.menu li a span {
-	background:url(images/bullet-arrow.png);
+	background:url(../images/bullet-arrow.png);
 	width:9px;
 	height: 7px;
 	float:right;
@@ -251,25 +251,25 @@ header.site-header {
 	position: fixed;
 	top:0;
 	left:0;
-	background: url(images/woodbar.jpg) bottom left;
+	background: url(../images/woodbar.jpg) bottom left;
 	min-height: 35px;
 	width:100% ;
 	display:inline-block;
 	z-index:10
 }
 .home-button {
-	background:url(images/home-icon.png);
+	background:url(../images/home-icon.png);
 	width:100%;
 	height: 100%
 }
 
 .home-button-container {
-	background:url(images/sep-wood-vertical.jpg) right repeat-y;	
+	background:url(../images/sep-wood-vertical.jpg) right repeat-y;	
 	float:left
 }
 
 .menu-button {
-	background:url(images/menu-icon.png);
+	background:url(../images/menu-icon.png);
 	width:100%;
 	height: 100%
 }
@@ -279,7 +279,7 @@ header.site-header {
 
 
 .menu-button-container {
-	background:url(images/sep-wood-vertical.jpg) left repeat-y;	
+	background:url(../images/sep-wood-vertical.jpg) left repeat-y;	
 	float:right
 }
 
@@ -312,7 +312,7 @@ header.site-header {
 	top: 35px;
 	width: 118px;
 	height: 100%;
-	background:url(images/menu-bg.jpg);
+	background:url(../images/menu-bg.jpg);
 	box-shadow: -1px 1px 4px rgba(0, 0, 0, 0.5);
 	overflow: scroll
 }
@@ -321,7 +321,7 @@ ul.site-nav {
 	margin: 0 auto
 }
 ul.site-nav li {
-	background:url(images/sep-wood-horizontal.jpg) bottom repeat-x;
+	background:url(../images/sep-wood-horizontal.jpg) bottom repeat-x;
 	padding: 14px 0;
 	padding: 1rem 0
 }
@@ -348,7 +348,7 @@ footer.site-footer {
 	position: fixed;
 	bottom:0;
 	left:0;
-	background: url(images/woodbar.jpg) bottom right;
+	background: url(../images/woodbar.jpg) bottom right;
 	height: 15px;
 	width:100% ;
 	box-shadow: 0 -1px 4px rgba(0, 0, 0, 0.5);

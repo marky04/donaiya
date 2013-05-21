@@ -40,16 +40,15 @@
 			url: link,
 			success: function(data) {
 				$('#' + result_holder).html(data);				
+				preload_content();
 			}
 		});
-
-		preload_content();
 	}
 	
 	// This function is called when all images are loaded
 	function myCallback() {
 		$("#loading").hide();
-		$("#mobile_content").show();
+		//$("#mobile_content").show();
 	}
 	
 	// This function is called every time an image is loaded. It is being passed 2 parameters:
@@ -61,7 +60,8 @@
 	}
 	
 	function preload_content()
-	{alert('taz');
+	{
+		alert('taz');
 		$("#mobile_content").hide();
 		$("#loading").show();
 		$("#progressbar").html(0);

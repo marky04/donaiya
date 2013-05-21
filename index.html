@@ -39,8 +39,7 @@
 		$.ajax({
 			url: link,
 			success: function(data) {
-				$('#' + result_holder).html(data);				
-				preload_content();
+				$('#' + result_holder).html(data);
 			}
 		});
 	}
@@ -48,7 +47,7 @@
 	// This function is called when all images are loaded
 	function myCallback() {
 		$("#loading").hide();
-		//$("#mobile_content").show();
+		$("#mobile_content").show();
 	}
 	
 	// This function is called every time an image is loaded. It is being passed 2 parameters:
@@ -59,19 +58,23 @@
 		$("#progressbar").html(percent);
 	}
 	
+	preload_content();
 	function preload_content()
 	{
 		alert('taz');
 		$("#mobile_content").hide();
 		$("#loading").show();
-		$("#progressbar").html(0);
-		
-		// IMPORTANT: This is how you use the plugin. Apply it on a
-		// list of img tags and provide callback function.
-		$("#mobile_content").find('img').batchImageLoad({
-			loadingCompleteCallback: myCallback,
-			imageLoadedCallback: imageLoaded
-		});
+		$('#progressbar').html('<div style="width:40px; margin:80px auto 0;"><img src="images/ajax-loader.gif" /></div>');
+	
+		if($('#mobile_content').html() != '')
+		{
+			// IMPORTANT: This is how you use the plugin. Apply it on a
+			// list of img tags and provide callback function.
+			$("#mobile_content").find('img').batchImageLoad({
+				loadingCompleteCallback: myCallback,
+				imageLoadedCallback: imageLoaded
+			});
+		}
 	}
 	</script>
 	<script type="text/javascript" charset="utf-8" src="phonegap.js"></script>

@@ -24,7 +24,7 @@
 	AjaxReponse('http://donaiya.nextus.asia', 'mobile_content', 'home');
 	function AjaxReponse(link, result_holder, nav_id)
 	{
-		$('#' + result_holder).html('<div class="progress progress-striped active" style="margin-top:80px;"><div class="bar" style="width: 50%;"></div></div>');
+		$('#' + result_holder).html('<div style="width:40px; margin:80px auto 0;"><img src="images/ajax-loader.gif" /></div>');
 
 		$('#footer .main a').removeClass('btn-primary');
 		$('#footer .main a i').removeClass('icon-white');

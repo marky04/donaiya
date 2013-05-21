@@ -15,9 +15,6 @@
 </head>
 <body id="home">
 	<div id="mobile_content"></div>
-	<div id="loading">
-		<div id="progressbar"></div>
-	</div>
 
 	<!-- Placed at the end of the document so the pages load faster -->
 	<script src="http://maps.google.com/maps/api/js?sensor=false" type="text/javascript"></script>
@@ -40,6 +37,7 @@
 			url: link,
 			success: function(data) {
 				$('#' + result_holder).html(data);
+				preload_content();
 			}
 		});
 	}
@@ -55,10 +53,11 @@
 	// calculate a % and show it to the user.
 	function imageLoaded(elementsLoadedCount, totalImagesCount) {
 		var percent = Math.round((elementsLoadedCount / totalImagesCount) * 100);
-		$("#progressbar").html(percent);
+		//$("#progressbar").html(percent);
+		$('#progressbar').html('<div style="width:40px; margin:80px auto 0;"><img src="images/ajax-loader.gif" /></div>');
 	}
 	
-	preload_content();
+	
 	function preload_content()
 	{
 		alert('taz' + $('#mobile_content').html() + 'tazki');

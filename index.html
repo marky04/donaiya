@@ -12,9 +12,32 @@
 
 <link type="text/css" rel="stylesheet" href="css/style.donaiya.css" />
 <link type="text/css" rel="stylesheet" href="css/flexslider.css"  />
+<link type="text/css" rel="stylesheet" href="css/jpreloader.css"  />
 </head>
 <body id="home">
 	<div id="mobile_content"></div>
+	<!-- This section is for Splash Screen -->
+	<section id="jSplash">
+		<section class="selected">
+			<h2>jPreLoader v2</h2>
+			<strong>A loading screen to preload images using jQuery</strong>
+		</section>
+		<section>
+			<p>Create your own <br/>
+			<span style="font-size:30px; color:#FF6123;">Splash Screen</span>.</p>
+		</section>
+		<section>
+			<p>Customize Progress Bar and Progress Percentage <br/>
+			<span style="font-size:30px; color:#23FF27;">using CSS</span>.</p>
+		</section>
+		<section>
+			<p>Preload all images in <br/> 
+			<span style="font-size:25px; color:#FF23FF;">&lt;img&gt; tag</span> + 
+			<span style="font-size:25px; color:#FF23FF;">CSS background-image</span>.</p>
+		</section>
+	</section>
+	<!-- End of Splash Screen -->
+
 	<!-- Placed at the end of the document so the pages load faster -->
 	<script src="http://maps.google.com/maps/api/js?sensor=false" type="text/javascript"></script>
 	<script src="js/jquery.js"></script>
@@ -38,6 +61,50 @@
 			}
 		});
 	}
+	
+	document.addEventListener("onDeviceReady", image_preloader, false);
+	function image_preloader()
+	{
+		var timer;	//timer for splash screen
+		$('#mobile_content').hide();
+
+		//calling jPreLoader
+		$('body').jpreLoader({
+			splashID: "#jSplash",
+			loaderVPos: '70%',
+			autoClose: false,
+			closeBtnText: "Let's Begin!",
+			splashFunction: function() {  
+				//passing Splash Screen script to jPreLoader
+				$('#jSplash').children('section').not('.selected').hide();
+				$('#jSplash').hide().fadeIn(800);
+				
+				timer = setInterval(function() {
+					splashRotator();
+				}, 4000);
+			}
+		}, function() {	//callback function
+			clearInterval(timer);
+			$('#mobile_content').fadeIn(1000);
+		});
+		
+		//create splash screen animation
+		function splashRotator(){
+			var cur = $('#jSplash').children('.selected');
+			var next = $(cur).next();
+			
+			if($(next).length != 0) {
+				$(next).addClass('selected');
+			} else {
+				$('#jSplash').children('section:first-child').addClass('selected');
+				next = $('#jSplash').children('section:first-child');
+			}
+				
+			$(cur).removeClass('selected').fadeOut(800, function() {
+				$(next).fadeIn(800);
+			});
+		}
+	});
 	</script>
 	<script type="text/javascript" charset="utf-8" src="phonegap.js"></script>
 	<script type="text/javascript" charset="utf-8" src="cordova-2.5.0.js"></script>

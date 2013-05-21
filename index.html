@@ -12,37 +12,18 @@
 
 <link type="text/css" rel="stylesheet" href="css/style.donaiya.css" />
 <link type="text/css" rel="stylesheet" href="css/flexslider.css"  />
-<link type="text/css" rel="stylesheet" href="css/jpreloader.css"  />
 </head>
 <body id="home">
 	<div id="mobile_content"></div>
-	<!-- This section is for Splash Screen -->
-	<section id="jSplash">
-		<section class="selected">
-			<h2>jPreLoader v2</h2>
-			<strong>A loading screen to preload images using jQuery</strong>
-		</section>
-		<section>
-			<p>Create your own <br/>
-			<span style="font-size:30px; color:#FF6123;">Splash Screen</span>.</p>
-		</section>
-		<section>
-			<p>Customize Progress Bar and Progress Percentage <br/>
-			<span style="font-size:30px; color:#23FF27;">using CSS</span>.</p>
-		</section>
-		<section>
-			<p>Preload all images in <br/> 
-			<span style="font-size:25px; color:#FF23FF;">&lt;img&gt; tag</span> + 
-			<span style="font-size:25px; color:#FF23FF;">CSS background-image</span>.</p>
-		</section>
-	</section>
-	<!-- End of Splash Screen -->
+	<div id="loading">
+		<div id="progressbar"></div>
+	</div>
 
 	<!-- Placed at the end of the document so the pages load faster -->
 	<script src="http://maps.google.com/maps/api/js?sensor=false" type="text/javascript"></script>
 	<script src="js/jquery.js"></script>
 	<script type="text/javascript" src="js/jquery.flexslider-min.js"></script>
-	<script type="text/javascript" src="js/jpreloader.js"></script>
+	<script type="text/javascript" src="js/jquery.batchimageload.js"></script>
 	<script type="text/javascript">
 	//AjaxReponse('http://localhost/ci_donaiya/', 'mobile_content', 'home');
 	AjaxReponse('http://donaiya.nextus.asia', 'mobile_content', 'home');
@@ -63,54 +44,33 @@
 		});
 	}
 	
-	image_preloader();
-	function image_preloader()
-	{alert('taz');
-		var timer;
-		$('#mobile_content').hide();
-
-		//calling jPreLoader
-		$('body').jpreLoader({
-			splashID: "#jSplash",
-			loaderVPos: '70%',
-			autoClose: false,
-			closeBtnText: "Let's Begin!",
-			splashFunction: function()
-			{
-				$('#jSplash').children('section').not('.selected').hide();
-				$('#jSplash').hide().fadeIn(800);
-
-				timer = setInterval(function()
-				{
-					splashRotator();
-				}, 4000);
-			}
-		}, function()
-		{
-			clearInterval(timer);
-			$('#mobile_content').fadeIn(1000);
+	// This function is called when all images are loaded
+	function myCallback() {
+		$("#loading").hide();
+		$("#mobile_content").show();
+	}
+	
+	// This function is called every time an image is loaded. It is being passed 2 parameters:
+	// the number of images loaded so far and the number of total images. This allows you to
+	// calculate a % and show it to the user.
+	function imageLoaded(elementsLoadedCount, totalImagesCount) {
+		var percent = Math.round((elementsLoadedCount / totalImagesCount) * 100);
+		$("#progressbar").html(percent);
+	}
+	
+	preload_content();
+	function preload_content()
+	{
+		$("#mobile_content").hide();		
+		$("#loading").show();
+		$("#progressbar").html(0);
+		
+		// IMPORTANT: This is how you use the plugin. Apply it on a
+		// list of img tags and provide callback function.
+		$("#mobile_content").find('img').batchImageLoad({
+			loadingCompleteCallback: myCallback,
+			imageLoadedCallback: imageLoaded
 		});
-
-		//create splash screen animation
-		function splashRotator()
-		{
-			var cur = $('#jSplash').children('.selected');
-			var next = $(cur).next();
-
-			if($(next).length != 0)
-			{
-				$(next).addClass('selected');
-			}
-			else
-			{
-				$('#jSplash').children('section:first-child').addClass('selected');
-				next = $('#jSplash').children('section:first-child');
-			}
-
-			$(cur).removeClass('selected').fadeOut(800, function() {
-				$(next).fadeIn(800);
-			});
-		}
 	}
 	</script>
 	<script type="text/javascript" charset="utf-8" src="phonegap.js"></script>

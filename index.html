@@ -30,6 +30,7 @@
 	function AjaxReponse(link, result_holder, nav_id)
 	{		
 		//$('#' + result_holder).html('<div style="width:40px; margin:80px auto 0;"><img src="images/ajax-loader.gif" /></div>');
+		preload_content();
 
 		$('#footer .main a').removeClass('btn-primary');
 		$('#footer .main a i').removeClass('icon-white');
@@ -39,8 +40,7 @@
 		$.ajax({
 			url: link,
 			success: function(data) {
-				$('#' + result_holder).html(data);
-				preload_content();
+				$('#' + result_holder).html(data);				
 			}
 		});
 	}

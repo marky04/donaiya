@@ -28,8 +28,8 @@
 	//AjaxReponse('http://localhost/ci_donaiya/', 'mobile_content', 'home');
 	AjaxReponse('http://donaiya.nextus.asia', 'mobile_content', 'home');
 	function AjaxReponse(link, result_holder, nav_id)
-	{
-		$('#' + result_holder).html('<div style="width:40px; margin:80px auto 0;"><img src="images/ajax-loader.gif" /></div>');
+	{		
+		//$('#' + result_holder).html('<div style="width:40px; margin:80px auto 0;"><img src="images/ajax-loader.gif" /></div>');
 
 		$('#footer .main a').removeClass('btn-primary');
 		$('#footer .main a i').removeClass('icon-white');
@@ -40,6 +40,7 @@
 			url: link,
 			success: function(data) {
 				$('#' + result_holder).html(data);
+				preload_content();
 			}
 		});
 	}
@@ -58,7 +59,6 @@
 		$("#progressbar").html(percent);
 	}
 	
-	preload_content();
 	function preload_content()
 	{
 		$("#mobile_content").hide();		

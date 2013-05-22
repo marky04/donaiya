@@ -18,7 +18,6 @@
 	<gap:plugin name="ChildBrowser" version="~3" /> <!-- for Cordova (1.9.0+) -->
 	<gap:plugin name="ChildBrowser" version="~2" /> <!-- for Cordova 1.5.0 - 1.8.1 -->
 	<gap:plugin name="ChildBrowser" version="~1" /> <!-- for PhoneGap <= 1.4.1 -->
-	<gap:plugin name="statusBarNotification" />
 
 	<!--
         Enable individual API permissions by defining each here.

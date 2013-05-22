@@ -24,7 +24,7 @@
 	//AjaxReponse('http://localhost/ci_donaiya/', 'mobile_content', 'home');
 	AjaxReponse('http://donaiya.nextus.asia', 'mobile_content', 'home');
 	function AjaxReponse(link, result_holder, nav_id)
-	{
+	{alert('tazki w/o rescan');
 		$('#' + result_holder).html('<div style="width:40px; margin:80px auto 0;"><img src="images/ajax-loader.gif" /></div>');
 
 		$('#footer .main a').removeClass('btn-primary');
@@ -35,7 +35,12 @@
 		$.ajax({
 			url: link,
 			success: function(data) {
-				$('#' + result_holder).html(data);
+				
+				setTimeout(function()
+				{
+					$('#' + result_holder).html(data);
+				}, 5000);
+				
 			}
 		});
 	}
@@ -43,6 +48,5 @@
 	<script type="text/javascript" charset="utf-8" src="phonegap.js"></script>
 	<script type="text/javascript" charset="utf-8" src="cordova-2.5.0.js"></script>
 	<script type="text/javascript" charset="utf-8" src="js/childbrowser.js"></script>
-	<script type="text/javascript" charset="utf-8" src="js/statusbarnotification.js"></script>
 </body>
 </html>

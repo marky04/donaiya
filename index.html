@@ -4,7 +4,6 @@
 <title>Donaiya</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="robots" content="no-index, no-follow" /><!--index, follow-->
-
 <!-- Responsive and mobile friendly stuff -->
 <meta name="HandheldFriendly" content="True">
 <meta name="MobileOptimized" content="320">
@@ -35,11 +34,7 @@
 		$.ajax({
 			url: link,
 			success: function(data) {
-				
-				setTimeout(function()
-				{
-					$('#' + result_holder).html(data);
-				}, 5000);
+				$('#' + result_holder).html(data);
 			}
 		});
 	}

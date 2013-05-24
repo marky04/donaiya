@@ -4,6 +4,7 @@
 <title>Donaiya</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="robots" content="no-index, no-follow" /><!--index, follow-->
+
 <!-- Responsive and mobile friendly stuff -->
 <meta name="HandheldFriendly" content="True">
 <meta name="MobileOptimized" content="320">
@@ -12,35 +13,168 @@
 <link type="text/css" rel="stylesheet" href="css/style.donaiya.css" />
 <link type="text/css" rel="stylesheet" href="css/flexslider.css"  />
 </head>
-<body id="home">
-	<div id="mobile_content"></div>
+<body>
+	<div id="mobile_body"></div>
 
 	<!-- Placed at the end of the document so the pages load faster -->
 	<script src="http://maps.google.com/maps/api/js?sensor=false" type="text/javascript"></script>
 	<script src="js/jquery.js"></script>
 	<script type="text/javascript" src="js/jquery.flexslider-min.js"></script>
+	<!--script type="text/javascript" src="js/jquery.touchSwipe.min.js"></script-->
+	<script type="text/javascript" src="js/jquery.wipetouch.js"></script>
+	<script type="text/javascript" src="js/jquery.krioImageLoader.js"></script>
 	<script type="text/javascript">
-	//AjaxReponse('http://localhost/ci_donaiya/', 'mobile_content', 'home');
-	AjaxReponse('http://donaiya.nextus.asia', 'mobile_content', 'home');
-	function AjaxReponse(link, result_holder, nav_id)
+	HomeAjaxLoader();
+	function HomeAjaxLoader()
 	{
-		$('#' + result_holder).html('<div style="width:40px; margin:80px auto 0;"><img src="images/ajax-loader.gif" /></div>');
-
-		$('#footer .main a').removeClass('btn-primary');
-		$('#footer .main a i').removeClass('icon-white');
-		$('#' + nav_id).addClass('btn-primary');
-		$('#' + nav_id + ' i').addClass('icon-white');
-
+		//var link = 'http://localhost/ci_donaiya/';
+		var link = 'http://donaiya.nextus.asia';
 		$.ajax({
 			url: link,
-			success: function(data) {
-				$('#' + result_holder).html(data);
+			success: function(data)
+			{
+				$('#mobile_body').append('<div id="home-holder">');
+				$('#home-holder').html(data);
+				LoadFooterNavigation();
 			}
 		});
 	}
+
+	function LoadSideNavigation()
+	{
+		$('.menu-button').click(function(){
+
+			if($(this).hasClass('active')){
+				$(this).removeClass('active');
+				$('.nav-container').animate({right:"-"+100+"%"}, 300);
+
+			}else {
+				$(this).addClass('active');
+				$('.nav-container').animate({right:0}, 300);
+			}
+		});
+	}
+
+	function LoadFooterNavigation()
+	{
+		var activ = 0;
+		var next  = activ + 1;
+		var prev;
+		var $current = $('.footer-nav-wrapper ul:eq('+ activ +')');
+
+		$('.footer-nav-wrapper ul').css('left','100%');
+		$current.addClass('active').css('left',0);
+
+		$('#footer-next').click(function() {
+
+			$current = $('.footer-nav-wrapper ul:eq('+ activ +')');
+			if($current.next().length){
+				$current.animate({left: '-'+100+'%'}).removeClass('active');
+				$current.next().animate({left: 0});
+
+				activ = activ + 1;
+				addMarker(activ);
+			}
+		});
+
+		$('#footer-prev').click(function(){
+
+			$current = $('.footer-nav-wrapper ul:eq('+ activ +')');
+			if($current.prev().length){
+				$current.animate({left: '+'+100+'%'}).removeClass('active');
+				$current.prev().animate({left: 0});
+
+				activ = activ - 1;
+				addMarker(activ);
+			}
+		});
+
+		var menuCount =  $('.footer-nav-wrapper ul').length;
+		for( var z = 0 ; z < menuCount ; z++){
+			$('#footer-nav-marker').append('<li><a></a></li>');
+		}
+
+		$('#footer-nav-marker li:eq('+ activ +')').addClass('footer-nav-active');
+
+		$('#home-footer').wipetouch(
+		{
+			// settings here
+			wipeLeft: function(result)
+			{ 
+				$current = $('.footer-nav-wrapper ul:eq('+ activ +')');
+
+				if($current.next().length){
+					$current.animate({left: '-'+100+'%'}).removeClass('active');
+					$current.next().animate({left: 0});
+
+					activ = activ + 1;
+					addMarker(activ);
+				}
+			},
+			wipeRight function(result)
+			{
+				$current = $('.footer-nav-wrapper ul:eq('+ activ +')');
+
+				if($current.prev().length){
+					$current.animate({left: '+'+100+'%'}).removeClass('active');
+					$current.prev().animate({left: 0});
+
+					activ = activ - 1;
+					addMarker(activ);
+				}
+			},
+			wipeUp: function(result) { alert('wipe up'); },
+			wipeDown: function(result) { alert('wipe down'); }
+		});
+		/*$("#home-footer").swipe( { swipeStatus:swipe2, allowPageScroll:"horizontal" } );
+		function swipe2(event, phase, direction, distance)
+		{
+			if ( direction == "left")
+			{
+				$current = $('.footer-nav-wrapper ul:eq('+ activ +')');
+
+				if($current.next().length){
+					$current.animate({left: '-'+100+'%'}).removeClass('active');
+					$current.next().animate({left: 0});
+
+					activ = activ + 1;
+					addMarker(activ);
+				}
+			}
+			else if( direction == "right")
+			{
+				$current = $('.footer-nav-wrapper ul:eq('+ activ +')');
+
+				if($current.prev().length){
+					$current.animate({left: '+'+100+'%'}).removeClass('active');
+					$current.prev().animate({left: 0});
+
+					activ = activ - 1;
+					addMarker(activ);
+				}
+			}
+		}*/
+	}
+
+	function addMarker(x)
+	{
+		$('.footer-nav-wrapper ul:eq('+ x +')').addClass('active');
+		$('#footer-nav-marker li:eq('+ x +')').addClass('footer-nav-active');
+		$('#footer-nav-marker li:eq('+ x +')').siblings().removeClass('footer-nav-active');
+	}
+
+	function LoadExternalLink(website_url)
+	{
+		window.plugins.childBrowser.showWebPage(website_url, {showAddress:false, showNavigationBar:true});
+		/*if(device.platform == 'iOS')
+		{
+			var ref = window.open(encodeURI(website_url), '_blank', 'EnableViewPortScale=yes');
+		}
+		else
+		{
+			var ref = window.open(encodeURI(website_url), '_blank', 'location=yes');
+		}*/
+	}
 	</script>
-	<script type="text/javascript" charset="utf-8" src="phonegap.js"></script>
-	<script type="text/javascript" charset="utf-8" src="cordova-2.5.0.js"></script>
-	<script type="text/javascript" charset="utf-8" src="js/childbrowser.js"></script>
 </body>
 </html>

@@ -69,7 +69,7 @@
 			$('#' + id).stop().animate(
 			{
 				right:0
-			}, 900, function()
+			}, 100, function()
 			{
 				$('#' + id).children('header').removeClass('sub-page-header');
 				$('#return_button').attr('onClick', 'LoadPreviousContent(\'' + id + '\');');
@@ -85,7 +85,7 @@
 					$('#' + id).stop().animate(
 					{
 						right:0
-					}, 900, function()
+					}, 100, function()
 					{
 						$('#' + id).children('header').removeClass('sub-page-header');
 						$('#' + id + ' .return-button').attr('onClick', 'LoadPreviousContent(\'' + id + '\');');
@@ -103,7 +103,7 @@
 		$('#' + id).stop().animate(
 		{
 			right:-$(document).width()
-		}, 900, function()
+		}, 100, function()
 		{
 			$(this).hide();
 		});

@@ -19,9 +19,9 @@
 	<!-- Placed at the end of the document so the pages load faster -->
 	<script src="http://maps.google.com/maps/api/js?sensor=false" type="text/javascript"></script>
 	<script src="js/jquery.js"></script>
+	<script type="text/javascript" src="js/jquery.swipe.js"></script>
 	<script type="text/javascript" src="js/jquery.flexslider-min.js"></script>
 	<!--script type="text/javascript" src="js/jquery.touchSwipe.min.js"></script-->
-	<script type="text/javascript" src="js/jquery.wipetouch.js"></script>
 	<script type="text/javascript" src="js/jquery.krioImageLoader.js"></script>
 	<script type="text/javascript">
 	HomeAjaxLoader();
@@ -33,10 +33,80 @@
 			url: link,
 			success: function(data)
 			{
-				$('#mobile_body').append('<div id="home-holder">');
+				var home_page_exist = false;
+				$('#mobile_body div').filter(function (index)
+				{
+					if($(this).attr('id') == 'home-holder')
+					{
+						home_page_exist = true;
+					}
+				});
+				
+				if(!home_page_exist)
+				{
+					$('#mobile_body').append('<div id="home-holder">');
+				}
+
 				$('#home-holder').html(data);
 				LoadFooterNavigation();
 			}
+		});
+	}
+
+	function AjaxServerReponse(destination_url, result_holder, id)
+	{
+		var sub_page_exist = false;
+		$('#' + result_holder + ' div').filter(function (index)
+		{
+			if($(this).attr('id') == id)
+			{
+				sub_page_exist = true;
+			}
+		});
+
+		if(sub_page_exist)
+		{
+			$('#' + id).show();
+			$('#' + id).animate(
+			{
+				right:0
+			}, 900, function()
+			{
+				$('#' + id).children('header').removeClass('sub-page-header');
+				$('#return_button').attr('onClick', 'LoadPreviousContent(\'' + id + '\');');
+				$('#home-holder').hide();
+			});
+		}
+		else
+		{
+			$.ajax({
+				url: destination_url,
+				success: function(data) {
+					$('#' + result_holder).append('<div id="' + id + '" class="sub-page" style="right:-' + $(document).width() + 'px;">' + data + '</div>');
+					$('#' + id).animate(
+					{
+						right:0
+					}, 900, function()
+					{
+						$('#' + id).children('header').removeClass('sub-page-header');
+						$('#' + id + ' .return-button').attr('onClick', 'LoadPreviousContent(\'' + id + '\');');
+						$('#home-holder').hide();
+					});
+				}
+			});
+		}
+	}
+
+	function LoadPreviousContent(id)
+	{
+		$('#home-holder').show();
+		$('#' + id).children('header').addClass('sub-page-header');
+		$('#' + id).animate(
+		{
+			right:-$(document).width()
+		}, 900, function()
+		{
+			$(this).hide();
 		});
 	}
 
@@ -96,64 +166,31 @@
 
 		$('#footer-nav-marker li:eq('+ activ +')').addClass('footer-nav-active');
 
-		$('#home-footer').wipetouch(
+		$('#home-footer').touchSwipeLeft(function()
 		{
-			// settings here
-			wipeLeft: function(result)
-			{ 
-				$current = $('.footer-nav-wrapper ul:eq('+ activ +')');
+			$current = $('.footer-nav-wrapper ul:eq('+ activ +')');
 
-				if($current.next().length){
-					$current.animate({left: '-'+100+'%'}).removeClass('active');
-					$current.next().animate({left: 0});
+			if($current.next().length){
+				$current.animate({left: '-'+100+'%'}).removeClass('active');
+				$current.next().animate({left: 0});
 
-					activ = activ + 1;
-					addMarker(activ);
-				}
-			},
-			wipeRight: function(result)
-			{
-				$current = $('.footer-nav-wrapper ul:eq('+ activ +')');
+				activ = activ + 1;
+				addMarker(activ);
+			}
+		}); 
+		
+		$('#home-footer').touchSwipeRight(function()
+		{
+			$current = $('.footer-nav-wrapper ul:eq('+ activ +')');
 
-				if($current.prev().length){
-					$current.animate({left: '+'+100+'%'}).removeClass('active');
-					$current.prev().animate({left: 0});
+			if($current.prev().length){
+				$current.animate({left: '+'+100+'%'}).removeClass('active');
+				$current.prev().animate({left: 0});
 
-					activ = activ - 1;
-					addMarker(activ);
-				}
-			},
-			wipeUp: function(result) { alert('wipe up'); },
-			wipeDown: function(result) { alert('wipe down'); }
+				activ = activ - 1;
+				addMarker(activ);
+			}
 		});
-		/*$("#home-footer").swipe( { swipeStatus:swipe2, allowPageScroll:"horizontal" } );
-		function swipe2(event, phase, direction, distance)
-		{
-			if ( direction == "left")
-			{
-				$current = $('.footer-nav-wrapper ul:eq('+ activ +')');
-
-				if($current.next().length){
-					$current.animate({left: '-'+100+'%'}).removeClass('active');
-					$current.next().animate({left: 0});
-
-					activ = activ + 1;
-					addMarker(activ);
-				}
-			}
-			else if( direction == "right")
-			{
-				$current = $('.footer-nav-wrapper ul:eq('+ activ +')');
-
-				if($current.prev().length){
-					$current.animate({left: '+'+100+'%'}).removeClass('active');
-					$current.prev().animate({left: 0});
-
-					activ = activ - 1;
-					addMarker(activ);
-				}
-			}
-		}*/
 	}
 
 	function addMarker(x)

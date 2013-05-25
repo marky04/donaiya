@@ -21,7 +21,6 @@
 	<script src="js/jquery.js"></script>
 	<script type="text/javascript" src="js/jquery.swipe.js"></script>
 	<script type="text/javascript" src="js/jquery.flexslider-min.js"></script>
-	<!--script type="text/javascript" src="js/jquery.touchSwipe.min.js"></script-->
 	<script type="text/javascript" src="js/jquery.krioImageLoader.js"></script>
 	<script type="text/javascript">
 	HomeAjaxLoader();
@@ -67,7 +66,7 @@
 		if(sub_page_exist)
 		{
 			$('#' + id).show();
-			$('#' + id).animate(
+			$('#' + id).stop().animate(
 			{
 				right:0
 			}, 900, function()
@@ -83,7 +82,7 @@
 				url: destination_url,
 				success: function(data) {
 					$('#' + result_holder).append('<div id="' + id + '" class="sub-page" style="right:-' + $(document).width() + 'px;">' + data + '</div>');
-					$('#' + id).animate(
+					$('#' + id).stop().animate(
 					{
 						right:0
 					}, 900, function()
@@ -101,7 +100,7 @@
 	{
 		$('#home-holder').show();
 		$('#' + id).children('header').addClass('sub-page-header');
-		$('#' + id).animate(
+		$('#' + id).stop().animate(
 		{
 			right:-$(document).width()
 		}, 900, function()

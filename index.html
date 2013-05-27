@@ -11,11 +11,10 @@
 <meta name="viewport" content="width=device-width, target-densitydpi=160dpi, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
 
 <link type="text/css" rel="stylesheet" href="css/style.donaiya.css" />
-<link type="text/css" rel="stylesheet" href="css/flexslider.css"  />
+<link type="text/css" rel="stylesheet" href="css/flexslider.css" />
 </head>
 <body>
-	<div id="mobile_body"></div>
-
+	<div id="mobile-body"></div>
 	<!-- Placed at the end of the document so the pages load faster -->
 	<script src="http://maps.google.com/maps/api/js?sensor=false" type="text/javascript"></script>
 	<script src="js/jquery.js"></script>
@@ -24,36 +23,44 @@
 	<script type="text/javascript" src="js/jquery.flexslider-min.js"></script>
 	<script type="text/javascript" src="js/jquery.krioImageLoader.js"></script>
 	<script type="text/javascript">
+	onDeviceReady();
+	function onDeviceReady()
+	{
+		$('#mobile-body').attr('style', 'width:' + $(document).width() + 'px; height:' + ($(document).height() -195) + 'px;');
+	}
+
 	HomeAjaxLoader();
 	function HomeAjaxLoader()
 	{
+		var home_page_exist = false;
+		$('#mobile-body div').filter(function (index)
+		{
+			if($(this).attr('id') == 'home-holder')
+			{
+				home_page_exist = true;
+			}
+		});
+
+		if(!home_page_exist)
+		{
+			$('#mobile-body').append('<div id="home-holder">');
+		}
+
+		$('#home-holder').append('<div style="background:#000;"><div style="width:40px; margin:80px auto 0;"><img src="images/ajax-loader.gif" /></div></div>');
+
 		//var link = 'http://localhost/ci_donaiya/';
 		var link = 'http://donaiya.nextus.asia';
 		$.ajax({
 			url: link,
 			success: function(data)
 			{
-				var home_page_exist = false;
-				$('#mobile_body div').filter(function (index)
-				{
-					if($(this).attr('id') == 'home-holder')
-					{
-						home_page_exist = true;
-					}
-				});
-				
-				if(!home_page_exist)
-				{
-					$('#mobile_body').append('<div id="home-holder">');
-				}
-
 				$('#home-holder').html(data);
 				LoadFooterNavigation();
 			}
 		});
 	}
 
-	function AjaxServerReponse(destination_url, result_holder, id)
+	function AjaxServerReponse(destination_url, result_holder, id, tab_name)
 	{
 		var sub_page_exist = false;
 		$('#' + result_holder + ' div').filter(function (index)
@@ -65,6 +72,41 @@
 		});
 
 		if(sub_page_exist)
+		{
+			$('#' + id).show();
+			$('#' + id).stop().animate(
+			{
+				right:0
+			}, 500, function()
+			{
+				$('#' + id).children('header').removeClass('sub-page-header');
+				$('#return_button').attr('onClick', 'LoadPreviousContent(\'' + id + '\');');
+				$('#home-holder').hide();
+			});
+		}
+		else
+		{
+			$('#' + result_holder).append('<div id="' + id + '" class="sub-page" style="right:-' + $(document).width() + 'px;"></div>');
+			$('#' + id).append(loadHeader(tab_name)).append('<div style="background:#000;"><div style="width:40px; margin:100px auto 0;"><img src="images/ajax-loader.gif" /></div></div>');
+			$('#' + id).stop().animate(
+			{
+				right:0
+			}, 500, function()
+			{
+				$('#' + id).children('header').removeClass('sub-page-header');
+				$('#' + id + ' .return-button').attr('onClick', 'LoadPreviousContent(\'' + id + '\');');
+				$('#home-holder').hide();
+			});
+
+			$.ajax({
+				url: destination_url,
+				success: function(data) {
+					$('#' + id).html(data);
+				}
+			});
+		}
+
+		/*if(sub_page_exist)
 		{
 			$('#' + id).show();
 			$('#' + id).stop().animate(
@@ -94,7 +136,7 @@
 					});
 				}
 			});
-		}
+		}*/
 	}
 
 	function LoadPreviousContent(id)
@@ -110,20 +152,18 @@
 		});
 	}
 
-	function LoadSideNavigation()
+	function loadHeader(tab_name)
 	{
-		$('.menu-button').click(function(){
+		var tpl = '<header class="site-header sub-page-header">';
 
-			if($(this).hasClass('active')){
-				$(this).removeClass('active');
-				$('.nav-container').animate({right:"-"+100+"%"}, 300);
+		tpl += '<div class="home-button-container"><div class="return-button home-button"></div></div><span class="page-title">' + tab_name + '</span>';
 
-			}else {
-				$(this).addClass('active');
-				$('.nav-container').animate({right:0}, 300);
-			}
-		});
-	}
+		tpl += '<a href="tel:09093166976"><img src="images/phone-btn.png" class="social-media-top" /></a>';
+		tpl += '<a href="mailto:?to=mark@nextus.asia&subject=Donaiya Contact" target="_blank"><img src="images/email-btn.png"  class="social-media-top"/></a>';
+		tpl += '</header>';
+
+		return tpl;
+	}I
 
 	function LoadFooterNavigation()
 	{
@@ -177,8 +217,8 @@
 				activ = activ + 1;
 				addMarker(activ);
 			}
-		}); 
-		
+		});
+
 		$('#home-footer').touchSwipeRight(function()
 		{
 			$current = $('.footer-nav-wrapper ul:eq('+ activ +')');

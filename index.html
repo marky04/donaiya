@@ -244,19 +244,19 @@
 
 	function LoadExternalLink(website_url)
 	{
-		window.plugins.childBrowser.showWebPage(website_url, {showAddress:false, showNavigationBar:true});
-		/*if(device.platform == 'iOS')
+		//window.plugins.childBrowser.showWebPage(website_url, {showAddress:false, showNavigationBar:true});
+		if(device.platform == 'iOS')
 		{
 			var ref = window.open(encodeURI(website_url), '_blank', 'EnableViewPortScale=yes');
 		}
 		else
 		{
 			var ref = window.open(encodeURI(website_url), '_blank', 'location=yes');
-		}*/
+		}
 	}
 	</script>
 	<script type="text/javascript" charset="utf-8" src="phonegap.js"></script>
 	<script type="text/javascript" charset="utf-8" src="cordova-2.5.0.js"></script>
-	<script type="text/javascript" charset="utf-8" src="js/childbrowser.js"></script>
+	<!--script type="text/javascript" charset="utf-8" src="js/childbrowser.js"></script-->
 </body>
 </html>

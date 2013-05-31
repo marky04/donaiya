@@ -187,6 +187,10 @@ ul.menu li .item-thumbnail{
 	padding-right: 2px;
 	margin-right: 5%
 }
+ul.menu li .item-thumbnail img{
+	max-width:90px;
+	max-height:80px;
+}
 ul.menu li .item-title{
 	height: 100%;
 	float:left;
@@ -248,8 +252,8 @@ header.site-header {
 	position: fixed;
 	top:0;
 	left:0;
-	background: url(../images/top_bar.jpg); /*url(../images/woodbar.jpg) bottom left;*/
-	min-height: 40px;
+	background: #A60000; /*url(../images/top_bar.jpg); /*url(../images/woodbar.jpg) bottom left;*/
+	min-height: 35px;
 	width:100% ;
 	display:inline-block;
 	z-index:10
@@ -423,15 +427,15 @@ footer.site-footer {
 				text-align: center;
 			}
 			#home-footer #footer-nav-marker li{
-				width:11px;
+				width:4px;
 				padding:0;
 				margin-right:5px;
 				display: inline-block;
 				float:none;
 			}
 			#home-footer #footer-nav-marker li a{
-				width: 8px;
-				height: 8px;
+				width: 4px;
+				height: 4px;
 				display: inline-block;
 				background: #333;
 				cursor: pointer;
@@ -474,7 +478,7 @@ footer.site-footer {
 	border-radius:0 0 4px 4px;
 	display:block;
 	background:#ccc;
-	width:99.5%;
+	width:98%;
 	height:180px;
 	padding:3px 3px 0;
 }

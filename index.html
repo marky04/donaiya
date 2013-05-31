@@ -86,7 +86,7 @@
 		}
 		else
 		{
-			$('#' + result_holder).append('<div id="' + id + '" class="sub-page" style="right:-' + $(document).width() + 'px;"></div>');
+			$('#' + result_holder).append('<div id="' + id + '" class="sub-page" style="height:'+ $(document).height() + 'px; right:-' + $(document).width() + 'px;"></div>');
 			$('#' + id).append(loadHeader(tab_name)).append('<div style="background:#000;"><div style="width:40px; margin:100px auto 0;"><img src="images/ajax-loader.gif" /></div></div>');
 			$('#' + id).stop().animate(
 			{
@@ -117,7 +117,7 @@
 		{
 			HomeAjaxLoader();
 		}
-
+		
 		$('#home-holder').show();
 		$('#' + id).children('header').addClass('sub-page-header');
 		$('#' + id).stop().animate(
@@ -219,7 +219,6 @@
 
 	function LoadExternalLink(website_url)
 	{
-		//window.plugins.childBrowser.showWebPage(website_url, {showAddress:false, showNavigationBar:true});
 		if(device.platform == 'iOS')
 		{
 			var ref = window.open(encodeURI(website_url), '_blank', 'EnableViewPortScale=yes');
@@ -232,6 +231,6 @@
 	</script>
 	<script type="text/javascript" charset="utf-8" src="phonegap.js"></script>
 	<script type="text/javascript" charset="utf-8" src="cordova-2.5.0.js"></script>
-	<!--script type="text/javascript" charset="utf-8" src="js/childbrowser.js"></script-->
+	<script type="text/javascript" src="js/PushNotification.js"></script>
 </body>
 </html>

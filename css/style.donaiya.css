@@ -503,19 +503,19 @@ footer.site-footer {
 .location-tab-holder{
 	position:absolute;
 	bottom:10px;
-	left:6%;
+	left:2.6%;
 	z-index:99;
 }
 .location-tab-controls{
 	float:left;
 	background:#FE0202;
 	border-radius:5px;
-	width:50px;
+	width:55px;
 	height:22px;
-	margin-right:5px;
+	margin-right:4px;
 	color:#fff;
 	cursor:pointer;
-	font-size:11px;
+	font-size:10px;
 	line-height:22px;
 	text-align:center;
 }

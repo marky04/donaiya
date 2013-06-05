@@ -459,8 +459,8 @@ footer.site-footer {
 /* share friend page */
 #share_button{
 	position:absolute;
-	left:50%;
-	bottom:50px;
+	left:32%;
+	bottom:40px;
 	background:#A90000;
 	border:0;
 	border-radius:6px;
@@ -469,6 +469,7 @@ footer.site-footer {
 	color:#fff;
 	font-size:17px;
 	cursor:pointer;
+	text-align:center;
 }
 #share_friend_holder{
 	z-index:9;
